@@ -36,7 +36,19 @@
     cursor:pointer;
     border:3px solid transparent;
     transition:.25s ease;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow:0 6px 16px rgba(0,0,0,0.12);
+  }
+
+  /* ⭐ Tarjeta seleccionada (ESTILO PREMIUM DE BODA) */
+  .selected {
+    border:3px solid #d4af37 !important; /* dorado */
+    box-shadow:0 6px 18px rgba(212,175,55,0.6) !important;
+    transform: scale(1.02);
   }
 
   .card img {
@@ -181,10 +193,10 @@ async function cargarCatalogo() {
 function toggle(id, card) {
   if (seleccion.includes(id)) {
     seleccion = seleccion.filter(x => x !== id);
-    card.style.border = "3px solid transparent";
+    card.classList.remove("selected");
   } else {
     seleccion.push(id);
-    card.style.border = "3px solid #0077ff";
+    card.classList.add("selected");
   }
 
   document.getElementById("confirm-btn").disabled = seleccion.length === 0;
@@ -218,7 +230,4 @@ document.getElementById("confirm-btn").onclick = async () => {
 
 </body>
 </html>
-
-</html>
-
 
