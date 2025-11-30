@@ -6,34 +6,50 @@
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 
 <style>
-  body {
-    margin:0;
-    background:#fafafa;
-    font-family:"Segoe UI", sans-serif;
-  }
-  .center { text-align:center; padding:30px; }
+body {
+  margin:0;
+  background:#fafafa;
+  font-family:"Segoe UI", sans-serif;
 
-  .welcome-img {
-    width:100%;
-    max-width:420px;
-    border-radius:20px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.2);
-  }
+  /* ⭐⭐ CENTRADO REAL DE TODO EL CONTENIDO ⭐⭐ */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
 
-  .hidden { display:none; }
+/* Contenido centrado */
+.center { 
+  text-align:center; 
+  width:100%;
+  max-width:500px;
+  padding:30px 20px;
+  box-sizing:border-box;
+}
 
-  /* ⭐⭐⭐ CENTRADO REAL DEL BOTÓN DE GOOGLE ⭐⭐⭐ */
-  #google-btn-wrapper {
-    width: 100%;
-    display:flex;
-    justify-content:center;
-    margin-top:20px;
-  }
+.welcome-img {
+  width:100%;
+  max-width:420px;
+  border-radius:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
 
-/* 🔥 Corrección final para centrar REAL del botón de Google */
+.hidden { display:none; }
+
+/* ⭐⭐⭐ CENTRADO REAL DEL BOTÓN DE GOOGLE ⭐⭐⭐ */
+#google-btn-wrapper {
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-top:20px;
+}
+
 #g_id_onload,
 .g_id_signin {
   width: 100% !important;
+  max-width: 280px !important;   /* Tamaño exacto del botón */
   display:flex !important;
   justify-content:center !important;
 }
@@ -44,7 +60,7 @@
   display:block !important;
 }
 
-/* Google a veces mete un div invisible que empuja el botón */
+/* Google mete elementos que empujan el botón: los neutralizo */
 #g_id_onload > div,
 .g_id_signin > div[style*="position"],
 .g_id_signin > div[style*="absolute"] {
@@ -54,63 +70,64 @@
   margin-right: auto !important;
 }
 
+/* --- Catálogo --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+  gap: 25px;
+  padding: 20px;
+}
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
-    gap: 25px;
-    padding: 20px;
-  }
+.card {
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  cursor:pointer;
+  border:3px solid transparent;
+  transition:.25s ease;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
 
-  .card {
-    background:white;
-    border-radius:14px;
-    overflow:hidden;
-    cursor:pointer;
-    border:3px solid transparent;
-    transition:.25s ease;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-  }
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow:0 6px 16px rgba(0,0,0,0.12);
+}
 
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow:0 6px 16px rgba(0,0,0,0.12);
-  }
+.selected {
+  border:3px solid #d4af37 !important;
+  box-shadow:0 6px 18px rgba(212,175,55,0.6) !important;
+  transform: scale(1.02);
+}
 
-  .selected {
-    border:3px solid #d4af37 !important;
-    box-shadow:0 6px 18px rgba(212,175,55,0.6) !important;
-    transform: scale(1.02);
-  }
+.card img {
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
 
-  .card img {
-    width:100%;
-    height:200px;
-    object-fit:cover;
-  }
+.card-content { padding:16px; }
 
-  .card-content { padding:16px; }
+.agotado {
+  opacity:0.4;
+  pointer-events:none;
+}
 
-  .agotado {
-    opacity:0.4;
-    pointer-events:none;
-  }
+#confirm-btn {
+  display:block;
+  margin:25px auto;
+  padding:12px 30px;
+  background:#0077ff;
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:18px;
+  cursor:pointer;
+}
+#confirm-btn:disabled {
+  background:#aaa;
+  cursor:not-allowed;
+}
 
-  #confirm-btn {
-    display:block;
-    margin:25px auto;
-    padding:12px 30px;
-    background:#0077ff;
-    color:white;
-    border:none;
-    border-radius:12px;
-    font-size:18px;
-    cursor:pointer;
-  }
-  #confirm-btn:disabled {
-    background:#aaa;
-    cursor:not-allowed;
-  }
 </style>
 </head>
 
