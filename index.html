@@ -58,7 +58,8 @@ p  { font-size:16px; line-height:1.4; }
   border:3px solid transparent;
   transition:.25s ease;
   box-shadow:0 4px 12px rgba(0,0,0,0.1);
-  position: relative;
+  display:flex;
+  flex-direction:column;
 }
 
 .card:hover {
@@ -78,25 +79,24 @@ p  { font-size:16px; line-height:1.4; }
   object-fit:cover;
 }
 
-.card-content { padding:16px; }
+.card-content { 
+  padding:16px; 
+  flex-grow:1;
+}
 
-/* Tarjeta agotada con banner inferior */
+/* Tarjeta agotada con banner inferior debajo del contenido */
 .agotado {
   opacity:0.5;
   pointer-events:none;
 }
 .agotado .agotado-banner {
-  position:absolute;
-  bottom:0;
   width:100%;
-  background:rgba(212,175,55,0.95);
-  color:white;
+  background:#d4af37; /* dorado */
+  color:black;          /* letras negras */
   text-align:center;
   padding:6px 0;
   font-weight:bold;
   font-size:14px;
-  border-top-left-radius:0;
-  border-top-right-radius:0;
 }
 
 /* Botón confirmar dorado */
